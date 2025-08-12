@@ -41,13 +41,20 @@ jobs:
           make clean
           make
 
-      - name: Upload built binary
+      - name: Zip built binary
+        run: |
+          cd ${{ github.workspace }}/iSyncNotif/obj
+          zip isyncnotif.zip isyncnotif
+
+      - name: Upload built zip
         uses: actions/upload-artifact@v4
         with:
           name: isyncnotif
-          path: ./iSyncNotif/obj
+          path: ./iSyncNotif/obj/isyncnotif.zip
 
       - name: Show example usage script
         run: |
           echo "Example usage:"
+          echo "scp isyncnotif.zip root@iphone_ip:/tmp/"
+          echo "ssh root@iphone_ip 'unzip /tmp/isyncnotif.zip -d /usr/bin && rm /tmp/isyncnotif.zip'"
           echo "ssh root@iphone_ip '/usr/bin/isyncnotif \"title here\" \"message here\"'"
