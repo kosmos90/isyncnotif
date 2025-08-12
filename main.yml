@@ -1,0 +1,40 @@
+name: Build iSyncNotif
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          brew install llvm libplist libxml2
+
+      - name: Install Theos
+        run: |
+          git clone --depth=1 https://github.com/theos/theos.git $HOME/theos
+
+      - name: Build isyncnotif
+        env:
+          THEOS: ${{ env.HOME }}/theos
+        run: |
+          cd ${{ github.workspace }}
+          make clean
+          make
+
+      - name: Upload built binary
+        uses: actions/upload-artifact@v3
+        with:
+          name: isyncnotif
+          path: ./isyncnotif
+
+      - name: Show example usage script
+        run: |
+          echo "ssh root@iphone_ip '/usr/bin/isyncnotif \"title here\" \"message here\"'"
