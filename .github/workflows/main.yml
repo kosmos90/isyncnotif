@@ -37,21 +37,25 @@ jobs:
 
       - name: Zip built binary
         run: |
-          cd ${{ github.workspace }}/iSyncNotif/obj
-          zip isyncnotif.zip isyncnotif
+          cd ${{ github.workspace }}/iSyncNotif/.theos/obj/debug
+          zip iSyncNotif.zip iSyncNotif
 
-      - name: Upload built zip
+      - name: Upload built zip (Artifact)
         uses: actions/upload-artifact@v4
         with:
-          name: isyncnotif
-          path: ./iSyncNotif/obj/isyncnotif.zip
+          name: iSyncNotif
+          path: ./iSyncNotif/.theos/obj/debug/iSyncNotif.zip
+
+      - name: Upload to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ./iSyncNotif/.theos/obj/debug/iSyncNotif.zip
+        env:
+          GITHUB_TOKEN: ${{ secret.RELEASE }}
 
       - name: Show example usage script
         run: |
           echo "Example usage:"
-          echo "scp isyncnotif.zip root@iphone_ip:/tmp/"
-          echo "ssh root@iphone_ip 'unzip /tmp/isyncnotif.zip -d /usr/bin && rm /tmp/isyncnotif.zip'"
-          echo "ssh root@iphone_ip '/usr/bin/isyncnotif \"title here\" \"message here\"'"
-      - name: build no errors
-        run: |
-          echo "Pls"
+          echo "scp iSyncNotif.zip root@iphone_ip:/tmp/"
+          echo "ssh root@iphone_ip 'unzip /tmp/iSyncNotif.zip -d /usr/bin && rm /tmp/iSyncNotif.zip'"
+          echo "ssh root@iphone_ip '/usr/bin/iSyncNotif \"title here\" \"message here\"'"
