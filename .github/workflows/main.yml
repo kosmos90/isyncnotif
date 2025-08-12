@@ -22,8 +22,10 @@ jobs:
           git clone --recursive --depth=1 https://github.com/theos/theos.git $HOME/theos
 
       - name: Update Theos vendor files
+        env:
+          THEOS: ${{ env.HOME }}/theos
         run: |
-          $HOME/theos/bin/update-theos
+          $THEOS/bin/update-theos
 
       - name: Copy iPhoneOS6.1 SDK to Theos
         run: |
