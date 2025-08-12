@@ -1,7 +1,7 @@
 THEOS = $(HOME)/theos
 
 ARCHS = armv7
-TARGET = iphone:clang:6.1:6.1
+TARGET = iphone:clang:6.1:7.0
 
 TOOL_NAME = iSyncNotif
 iSyncNotif_FILES = main.m
