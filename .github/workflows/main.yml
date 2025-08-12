@@ -55,7 +55,6 @@ jobs:
 
       - name: Show example usage script
         run: |
-          echo "Example usage:"
-          echo "scp iSyncNotif.zip root@iphone_ip:/tmp/"
-          echo "ssh root@iphone_ip 'unzip /tmp/iSyncNotif.zip -d /usr/bin && rm /tmp/iSyncNotif.zip'"
-          echo "ssh root@iphone_ip '/usr/bin/iSyncNotif \"title here\" \"message here\"'"
+          echo "scp iSyncNotif root@iphone_ip:/usr/bin/"
+          echo "ssh root@iphone_ip '/usr/bin/iSyncNotif "title here" "message here"'"
+
