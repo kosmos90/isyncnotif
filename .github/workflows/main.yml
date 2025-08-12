@@ -21,17 +21,10 @@ jobs:
         run: |
           git clone --recursive --depth=1 https://github.com/theos/theos.git $HOME/theos
 
-      - name: Update Theos vendor files
-        env:
-          THEOS: ${{ env.HOME }}/theos
-        run: |
-          $THEOS/bin/update-theos
-
       - name: Download iPhoneOS6.1 SDK
         run: |
           curl -L -o iPhoneOS6.1.sdk.zip https://github.com/growtopiajaw/iPhoneOS-SDK/releases/download/v1.0/iPhoneOS6.1.sdk.zip
           unzip iPhoneOS6.1.sdk.zip -d $HOME/theos/sdks
-
 
       - name: Build iSyncNotif
         env:
@@ -59,3 +52,6 @@ jobs:
           echo "scp isyncnotif.zip root@iphone_ip:/tmp/"
           echo "ssh root@iphone_ip 'unzip /tmp/isyncnotif.zip -d /usr/bin && rm /tmp/isyncnotif.zip'"
           echo "ssh root@iphone_ip '/usr/bin/isyncnotif \"title here\" \"message here\"'"
+      - name: build no errors
+        run: |
+          echo "Pls"
