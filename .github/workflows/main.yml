@@ -21,11 +21,17 @@ jobs:
         run: |
           git clone --depth=1 https://github.com/theos/theos.git $HOME/theos
 
+      - name: Copy iPhoneOS6.1 SDK to Theos
+        run: |
+          mkdir -p $HOME/theos/sdks
+          cp -r ./iPhoneOS6.1.sdk $HOME/theos/sdks/
+
       - name: Build isyncnotif
         env:
           THEOS: ${{ env.HOME }}/theos
+          SDKVERSION: 6.1
         run: |
-          cd ${{ github.workspace }}
+          cd ${{ github.workspace }}/iSyncNotif
           make clean
           make
 
@@ -33,8 +39,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: isyncnotif
-          path: ./isyncnotif
+          path: ./iSyncNotif/obj
 
       - name: Show example usage script
         run: |
           echo "ssh root@iphone_ip '/usr/bin/isyncnotif \"title here\" \"message here\"'"
+
