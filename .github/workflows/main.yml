@@ -32,7 +32,7 @@ jobs:
           THEOS: ${{ env.HOME }}/theos
           SDKVERSION: 6.1
         run: |
-          cd ${{ github.workspace }}/iSyncNotif
+          ${{ github.workspace }}/iSyncNotif/.theos/obj/debug
           make clean
           make
 
