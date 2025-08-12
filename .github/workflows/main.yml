@@ -51,7 +51,7 @@ jobs:
         with:
           files: ./iSyncNotif/.theos/obj/debug/iSyncNotif.zip
         env:
-          GITHUB_TOKEN: ${{ secret.RELEASE }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE }}
 
       - name: Show example usage script
         run: |
