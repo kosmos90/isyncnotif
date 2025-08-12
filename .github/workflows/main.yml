@@ -32,9 +32,11 @@ jobs:
           THEOS: ${{ env.HOME }}/theos
           SDKVERSION: 6.1
         run: |
-          ${{ github.workspace }}/iSyncNotif/.theos/obj/debug
+          cd ${{ github.workspace }}/iSyncNotif
           make clean
           make
+
+  
 
       - name: Zip built binary
         run: |
