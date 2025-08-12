@@ -6,6 +6,7 @@ include $(THEOS)/makefiles/common.mk
 
 TOOL_NAME = iSyncNotif
 iSyncNotif_FILES = main.m
+iSyncNotif_FRAMEWORKS = UIKit
 iSyncNotif_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tool.mk
