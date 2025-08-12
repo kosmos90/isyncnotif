@@ -15,7 +15,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          brew install llvm libplist libxml2
+          brew install llvm libplist libxml2 ldid
 
       - name: Install Theos
         run: |
