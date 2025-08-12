@@ -10,7 +10,7 @@ Works on iOS 6 (armv7 devices) and above.
 It is used in iSync to show user a message that iSync has established connection with the iDevice.  
 It can also be used for just sending popup alerts to the iDevice.  
 [Click here to learn more...](#usage)
----
+
 
 ## How to Build
 
