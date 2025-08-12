@@ -23,7 +23,7 @@ It can also be used for just sending popup alerts to the iDevice.
 
 ## Usage
 
-After building, go to the `/iSyncNotif` folder
+After building (or downloading from Releases), go to the `/iSyncNotif` folder
 
 Run the tool with a message like this:
 
